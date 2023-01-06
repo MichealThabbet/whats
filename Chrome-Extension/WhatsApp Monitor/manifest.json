@@ -1,0 +1,43 @@
+{
+
+
+	"manifest_version": 2,
+	"name": "Online Monitor",
+	"description": "Online Monitor @http://github.com/rizwansoaib",
+	"version": "2.3",
+	"author": "Rizwan Ahmad",
+        
+
+	"icons": {
+		
+		"64": "images/icons/64.png",
+		"128": "images/icons/128.png"
+	},
+
+	"web_accessible_resources": [
+                  "*.js",
+                "*.mp3"
+                
+	],
+
+	"content_scripts": [
+        {
+            "matches": ["https://web.whatsapp.com/*"],
+            "js": ["start.js"],
+             "run_at":    "document_start"
+        }
+    ],
+
+
+
+	"permissions": [
+          "storage","tabs","https://web.whatsapp.com/*","https://notify.run/*","https://whatsappanalysis.in/*"
+        ],
+
+       "browser_action": {
+    "default_popup": "popup.html"
+
+  }
+
+
+}

@@ -1,0 +1,188 @@
+
+var nkey=""
+chrome.storage.local.get('nkey', function (result2) {
+        nkey = result2.nkey;
+        if(nkey!="")
+        alert("Subcribe any Device for Notification\nhttps://notify.run/"+nkey)
+
+            
+    });
+
+
+
+
+
+function onotif(user) {
+   if(nkey==null||nkey==undefined||nkey=="")
+    return
+  else{
+        var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://notify.run/"+nkey,true);
+    xhr.send("📱WhatsApp Monitor: "+user+" is Online")
+
+  }
+
+}
+
+
+
+
+function save(user,t1,t2,t){
+  var d   = new Date();
+  var curd=d.toLocaleDateString("en-GB").split(' ')[0]
+  user=user.replace(/[^a-zA-Z0-9]/g, "")
+  curd=curd.replace(/[^a-zA-Z0-9]/g, "")
+
+  const surl='https://whatsappanalysis.in/save/'+user+'/'+curd+'/'+t1+'/'+t2+'/'+t
+  var xhr = new XMLHttpRequest();
+   xhr.open("GET",surl);
+  xhr.send()
+  
+}
+
+
+
+pso=""
+chrome.storage.local.get('pso', function (result3) {
+        pso = result3.pso;
+
+        
+            
+    });
+
+
+
+function playsound()
+{
+
+let url = chrome.runtime.getURL('open.mp3')
+                  let a = new Audio(url)
+                  a.play()
+
+}
+
+
+setInterval(function(){
+  try{
+    olb=document.querySelector('#online_list_btn').innerText
+    if(olb=='true' && pso=='3')
+    {
+      
+      playsound();
+    }
+    prev=document.querySelectorAll('#userbtn')[0].innerHTML
+    if(prev!='null'&&pso=='1')
+    {
+      playsound();
+    }
+
+  }
+catch(err){}
+
+
+try{
+  olb=document.querySelector('#online_list_btn').innerText
+  if(olb=='true' && pso=='3')
+    {
+      
+
+      playsound();
+    }
+
+  user=document.querySelectorAll('#contactbtn')[0].innerHTML;
+  if(user!='null')
+    onotif(user);
+}
+catch(err){}
+   
+
+
+},2200)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function dcsv2() {
+   console.log("Downloading History as CSV File")
+    var rows = document.body.querySelectorAll(' table' + ' tr');
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(';'));
+    }
+    var csv_string = csv.join('\n');
+    var filename = `whatsapp-monitor_${new Date().toLocaleDateString()}&&${new Date().toLocaleTimeString()}.csv`;
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
+
+
+
+chrome.storage.local.get('save_interval', function (result4) {
+        save_interval = parseInt(result4.save_interval);
+        if(save_interval>=1)
+        setInterval(dcsv2,save_interval*60000);
+
+        
+            
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+var btn = document.createElement("BUTTON");   
+btn.innerHTML = " WhatsApp Monitor Online History";  
+btn.style.width="100px";
+btn.id="download";                 
+document.querySelector("#side > header").appendChild(btn);
+btn.style.backgroundColor="#075e54";
+btn.style.color="white";
+
+
+var img=document.createElement("IMG");
+img.src="https://raw.githubusercontent.com/rizwansoaib/whatsapp-monitor/master/Chrome-Extension/WhatsApp%20Monitor/images/icons/64.png"
+document.querySelector("#side > header").appendChild(img);
+
+
+document.getElementById('download').addEventListener('click', dcsv2);
+
+
+
+
+
+
