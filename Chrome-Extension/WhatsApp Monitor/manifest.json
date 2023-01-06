@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+	"name": "Online Monitor for WhatsApp",
+	"description": "Online Monitor WhatsApp Web",
+	"version": "2.9",
+	"author": "Rizwan Ahmad",
+
+
+  "action": {
+    "default_title": "Start WhatsApp Online Monitor",
+ "default_popup": "popup.html" 
+},
+       
+
+	"icons": {
+		
+		"64": "images/icons/64.png",
+		"128": "images/icons/128.png"
+	},
+
+	"web_accessible_resources": [{
+    "resources": ["*.js","*.mp3"],
+    "matches": ["<all_urls>"]
+  }],
+
+	"content_scripts": [
+        {
+            "matches": ["https://web.whatsapp.com/*"],
+            "js": ["start.js"],
+             "run_at":    "document_end"
+        }
+    ],
+    
+    "permissions": [
+      "scripting",
+	"storage",
+	"activeTab"
+	],
+	
+    
+    "host_permissions": [
+    "https://web.whatsapp.com/*","https://notify.run/*","https://wpmonitor.tech/*"
+  ]
+
+}
