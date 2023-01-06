@@ -1,0 +1,127 @@
+
+<html>
+<head>
+	<title>Online Monitor</title>
+<script src="bts/jq.js"></script>
+	<link rel="stylesheet" href="bts/bts.css">
+
+
+<link rel="stylesheet" href="bts/bts_theme.css">
+
+<script src="bts/bts_js.js"></script>
+
+
+
+</head>
+<body style="width: 1400px height:800px">
+<h4 align="center" style="color: red">Please Open  Chat on WhatsApp Web at least once to start monitoring</h4>
+<h3 align="center">
+Notification Key: <input id="nkey" type="text" autocomplete="username" name="nkey" placeholder="Leave Blank Don't know"> 
+</h3>
+<h2 align="center"><a href="https://github.com/rizwansoaib/whatsapp-monitor/blob/master/Chrome-Extension/Notification.md" target="_blank" >About Notification Key</a></h2>
+<div class="btn-group btn-group-toggle" data-toggle="buttons"  align="center">
+	<p>Play Sounds:
+  <label class="btn btn-secondary">
+    <input type="radio" id="ps3" name="ps" value="3" autocomplete="off" checked>Always
+  </label>
+  <label class="btn btn-secondary active">
+    <input type="radio" id="ps1" name="ps" value="1" autocomplete="off" checked>Only Once
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" id="ps2" name="ps" value="2" autocomplete="off"> Deny
+  </label>
+  </p>
+</div>
+<br>
+<labelclass="btn btn-secondary">
+Auto Save CSV
+<input type="number" id="interval" name="interval" min="5 " step="5" default="0"> Minute
+</label>
+
+
+<h2>
+<center><button class="btn-success" id="start"; style="border-radius:40px;height:70px;width:150px;">OK</button></center>
+</h2>
+
+<hr>
+
+<h1 align="center">
+<input align="center" id="mob" type="text"  name="mob" placeholder="             918115168763"> 
+</h1>
+<h2>
+<center>
+  
+  <button  id="mobchat"; style="border-radius:40px;">Open Chat </button>
+
+  <button  id="savenum"; style="border-radius:40px; color: seagreen;">Add Favourite</button> <br><br>
+   
+  <button  id="delnum"; style="border-radius:40px; color: red;">Remove Favourite</button>
+
+
+
+</center>
+</h2>
+
+
+<div class="alert-info" align="center"> 
+
+<h3>
+  Favourite Contacts 
+
+
+</h3>
+
+
+<h2>
+ 
+<div id="numarray" align="center">
+
+</div>
+
+</h2>
+
+</div>
+
+
+
+
+
+<div class="alert alert-success" role="alert" align="center">
+<a href="https://whatsappanalysis.in/online" target="_blank" class="alert-link">Whatsapp Monitor Online History</a>
+</div>
+
+
+
+<hr>
+<center>
+
+<br><br>
+<h3 align="center">Github Version 2.6 (10 July 2021)</h3>
+
+
+
+
+
+
+<h2>Please support us by star for continue this project Thank You</h2>
+	<h2 align="center"><a href="https://github.com/rizwansoaib/whatsapp-monitor" target="_blank">About Online Monitor</a>
+		
+		</h2>
+
+
+</center>
+
+
+
+
+
+
+</body>
+
+
+<script type="text/javascript" src="popup.js"></script>
+
+
+	
+
+</html>

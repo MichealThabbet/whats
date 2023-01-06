@@ -1,0 +1,66 @@
+{
+  "name": "WPMonitor",
+  "version": "1.4.0",
+  "main": "main.js",
+  "homepage": "https://github.com/rizwansoaib/whatsapp-monitor",
+  "author": {
+    "name": "rizwansoaib",
+    "email": "rizwansoaib@gmail.com"
+  },
+  "icon": "assets/logo.png",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --linux",
+    "dist-win": "electron-builder --win"
+  },
+  "build": {
+    "icon": "assests/logo.png",
+    "asar": true,
+    "asarUnpack": [
+      "assets/logo.png",
+      "assets/64.png",
+      "assets/websockets.js",
+      "assets/protobuf.js"
+    ],
+    "appId": "com.whatsappmonitor.v1.4",
+    "linux": {
+      "icon": "assets/logo.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi",
+        "zip"
+      ],
+      "icon": "assets/logo.ico"
+    },
+    "nsis": {
+      "installerIcon": "assets/logo.ico",
+      "installerHeaderIcon": "assets/logo.ico",
+      "deleteAppDataOnUninstall": true,
+
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+
+    }
+  },
+  "devDependencies": {
+    "electron": "^17.0.0",
+    "electron-builder": "^22.14.13"
+  },
+  "dependencies": {
+    "electron-store": "^8.0.1",
+    "http": "^0.0.1-security",
+    "node-notifier": "^10.0.1",
+    "request": "^2.88.2"
+  }
+}
